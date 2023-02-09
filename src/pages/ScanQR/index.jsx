@@ -3,17 +3,11 @@ import ContentLayout from "../../layouts/ContentLayout";
 import { BiScan } from "react-icons/bi";
 import { useState } from "react";
 import { useZxing } from "react-zxing";
-import { useMediaDevices } from "react-media-devices";
-const constraints = {
-  video: true,
-  audio: false,
-};
 
 const ScanQR = () => {
   const [result, setResult] = useState("");
-  const { devices } = useMediaDevices(constraints);
+
   const { ref } = useZxing({
-    deviceId: devices[1].deviceId,
     onResult(result) {
       setResult(result.getText());
     },
